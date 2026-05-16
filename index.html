@@ -44,14 +44,14 @@
     <h2>Rahang dan Gigi Bawah Gajah Purba</h2>
 
     <p>
-        Fragmen rahang ini diperkirakan berasal dari gajah purba Stegodon tarigonocephalus
+        Fragmen rahang dan gigi bawah gajah ini diperkirakan berasal dari gajah purba Stegodon tarigonocephalus
         yang hidup di kawasan Manyarejo sekitar 500.000 hingga 800.000tahun lalu.
     </p>
 
-    <button onclick="document.getElementById('audio').play()">
-        ▶ Putar Narasi
-    </button>
-
+<button onclick="toggleAudio()">
+    ▶ Play / Pause Narasi
+</button>
+    
     <audio id="audio" src="Narasi Rahang dan Gigi Bawah Gajah.mp3"></audio>
 </div>
 
@@ -72,5 +72,18 @@
 
 </a-scene>
 
+<script>
+    function toggleAudio() {
+
+        const audio = document.getElementById('audio');
+
+        if (audio.paused) {
+            audio.play();
+        } else {
+            audio.pause();
+        }
+    }
+</script>
+    
 </body>
 </html>
