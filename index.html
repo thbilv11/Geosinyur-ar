@@ -55,9 +55,6 @@
     <audio id="audio" src="Narasi Rahang dan Gigi Bawah Gajah.mp3"></audio>
 </div>
 
-<button onclick="gantiGambar()">
-    🔄 Lihat Rekonstruksi Gajah
-</button>
 
 <a-scene embedded arjs>
 
@@ -70,7 +67,7 @@
 
         <a-image
             id="fosilImage"
-            src="Rahang dan Gigi Bawah Gajah.png"
+            src="Stegodon Trigonocephalus.png"
             position="0 1 0"
             rotation="-90 0 0"
             scale="2 2 2">
@@ -95,24 +92,6 @@
     }
 </script>
 
-<script>
-
-let mode = 0;
-
-function gantiGambar() {
-
-    const image = document.getElementById("fosilImage");
-
-    if (mode === 0) {
-        image.setAttribute("src", "Rahang dan Gigi Bawah Gajah Purba.png");
-        mode = 1;
-    } else {
-        image.setAttribute("src", "Stegodon Trigonocephalus.png");
-        mode = 0;
-    }
-}
-
-</script>
 
 </body>
 </html>
