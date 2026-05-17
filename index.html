@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
+
 <head>
     <meta charset="utf-8">
     <title>GEOSINYUR AR</title>
 
+    <!-- AFRAME & AR.JS -->
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 
@@ -19,79 +21,139 @@
             bottom: 20px;
             left: 20px;
             right: 20px;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0, 0, 0, 0.75);
             color: white;
             padding: 15px;
-            border-radius: 12px;
+            border-radius: 14px;
             z-index: 999;
+        }
+
+        h2 {
+            margin-top: 0;
         }
 
         button {
             padding: 10px 15px;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             background: orange;
             color: white;
             font-weight: bold;
             cursor: pointer;
+            margin-top: 8px;
+            margin-right: 5px;
+        }
+
+        .hint {
+            font-size: 13px;
+            opacity: 0.8;
+            margin-top: 10px;
         }
     </style>
 </head>
 
 <body>
 
-<div class="info-box">
-    <h2>Rahang dan Gigi Bawah Gajah Purba</h2>
+    <!-- PANEL INFORMASI -->
+    <div class="info-box">
 
-    <p>
-        Fragmen rahang dan gigi bawah gajah ini diperkirakan berasal dari gajah purba Stegodon tarigonocephalus
-        yang hidup di kawasan Manyarejo sekitar 500.000 hingga 800.000tahun lalu.
-    </p>
+        <h2>Rahang Gajah Purba</h2>
 
-<button onclick="toggleAudio()">
-    ▶ Play / Pause Narasi
-</button>
-    
-    <audio id="audio" src="Narasi Rahang dan Gigi Bawah Gajah.mp3"></audio>
-</div>
+        <p>
+            Fosil ini merupakan rahang dan gigi bawah
+            <i>Stegodon trigonocephalus</i>,
+            gajah purba yang hidup di Pulau Jawa
+            sekitar 500.000 hingga 800.000 tahun lalu.
+        </p>
 
+        <!-- TOMBOL AUDIO -->
+        <button onclick="toggleAudio()">
+            ▶ Play / Pause Narasi
+        </button>
 
-<a-scene embedded arjs>
+        <!-- TOMBOL GANTI GAMBAR -->
+        <button onclick="gantiGambar()">
+            🔄 Swipe Rekonstruksi
+        </button>
 
-    <a-marker 
-        preset="hiro"
-        smooth="true"
-        smoothCount="10"
-        smoothTolerance="0.01"
-        smoothThreshold="5">
+        <p class="hint">
+            Tekan tombol rekonstruksi untuk melihat
+            bentuk utuh Stegodon trigonocephalus.
+        </p>
 
-        <a-image
-            id="fosilImage"
-            src="Stegodon Trigonocephalus.png"
-            position="0 1 0"
-            rotation="-90 0 0"
-            scale="2 2 2">
-        </a-image>
+        <!-- AUDIO -->
+        <audio id="audio" src="narasi.mp3"></audio>
 
-    </a-marker>
+    </div>
 
-    <a-entity camera></a-entity>
+    <!-- SCENE AR -->
+    <a-scene
+        embedded
+        vr-mode-ui="enabled: false;"
+        renderer="logarithmicDepthBuffer: true;"
+        arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
 
-</a-scene>
+        <!-- MARKER -->
+        <a-marker
+            preset="hiro"
+            smooth="true"
+            smoothCount="10"
+            smoothTolerance="0.01"
+            smoothThreshold="5">
 
-<script>
-    function toggleAudio() {
+            <!-- GAMBAR -->
+            <a-image
+                id="fosilImage"
+                src="rahang.png"
+                position="0 1 0"
+                rotation="-90 0 0"
+                scale="2 2 2">
+            </a-image>
 
-        const audio = document.getElementById('audio');
+        </a-marker>
 
-        if (audio.paused) {
-            audio.play();
-        } else {
-            audio.pause();
+        <!-- CAMERA -->
+        <a-entity camera></a-entity>
+
+    </a-scene>
+
+    <!-- SCRIPT -->
+    <script>
+
+        // AUDIO PLAY / PAUSE
+        function toggleAudio() {
+
+            const audio = document.getElementById('audio');
+
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
         }
-    }
-</script>
 
+        // GANTI GAMBAR
+        let mode = 0;
+
+        function gantiGambar() {
+
+            const image = document.getElementById("fosilImage");
+
+            if (mode === 0) {
+
+                image.setAttribute("src", "stegodon.png");
+
+                mode = 1;
+
+            } else {
+
+                image.setAttribute("src", "rahang.png");
+
+                mode = 0;
+            }
+        }
+
+    </script>
 
 </body>
 </html>
