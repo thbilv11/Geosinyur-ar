@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 
@@ -21,7 +22,7 @@
             bottom: 20px;
             left: 20px;
             right: 20px;
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(0, 0, 0, 0.78);
             color: white;
             padding: 15px;
             border-radius: 14px;
@@ -30,6 +31,11 @@
 
         h2 {
             margin-top: 0;
+            font-size: 22px;
+        }
+
+        p {
+            line-height: 1.5;
         }
 
         button {
@@ -54,24 +60,24 @@
 
 <body>
 
-    <!-- PANEL INFORMASI -->
+    <!-- PANEL INFO -->
     <div class="info-box">
 
-        <h2>Rahang Gajah Purba</h2>
+        <h2>GEOSINYUR AR</h2>
 
         <p>
             Fosil ini merupakan rahang dan gigi bawah
             <i>Stegodon trigonocephalus</i>,
-            gajah purba yang hidup di Pulau Jawa
+            salah satu gajah purba yang hidup di Pulau Jawa
             sekitar 500.000 hingga 800.000 tahun lalu.
         </p>
 
-        <!-- TOMBOL AUDIO -->
+        <!-- AUDIO -->
         <button onclick="toggleAudio()">
             ▶ Play / Pause Narasi
         </button>
 
-        <!-- TOMBOL GANTI GAMBAR -->
+        <!-- GANTI GAMBAR -->
         <button onclick="gantiGambar()">
             🔄 Swipe Rekonstruksi
         </button>
@@ -81,7 +87,7 @@
             bentuk utuh Stegodon trigonocephalus.
         </p>
 
-        <!-- AUDIO -->
+        <!-- AUDIO FILE -->
         <audio id="audio" src="Narasi Rahang dan Gigi Bawah Gajah.mp3"></audio>
 
     </div>
@@ -93,7 +99,7 @@
         renderer="logarithmicDepthBuffer: true;"
         arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
 
-        <!-- MARKER -->
+        <!-- MARKER HIRO -->
         <a-marker
             preset="hiro"
             smooth="true"
@@ -101,7 +107,7 @@
             smoothTolerance="0.01"
             smoothThreshold="5">
 
-            <!-- GAMBAR -->
+            <!-- IMAGE -->
             <a-image
                 id="fosilImage"
                 src="Rahang dan Gigi Bawah Gajah.png"
@@ -156,4 +162,8 @@
     </script>
 
 </body>
+
 </html>
+
+
+
